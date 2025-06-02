@@ -20,7 +20,7 @@ To run the tests, you'll need to install additional dependencies:
 brew install rubberband
 
 # On Ubuntu/Debian
-sudo apt-get install librubberband-dev
+sudo apt-get install -y rubberband-cli
 
 # Install Python test dependencies
 pip install abletonparsing[test]
