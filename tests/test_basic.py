@@ -1,9 +1,18 @@
 import abletonparsing
 import pytest
+from pathlib import Path
 
 import librosa
 import soundfile as sf
 import pyrubberband as pyrb
+
+# Get the directory where this test file is located
+TEST_DIR = Path(__file__).parent
+ASSETS_DIR = TEST_DIR / "assets"
+OUTPUT_DIR = TEST_DIR / "output"
+
+# Ensure output directory exists
+OUTPUT_DIR.mkdir(exist_ok=True)
 
 def _test_basic_params(audio_path, clip_path, loop_on, output_path, bpm,
 	start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
@@ -43,39 +52,39 @@ def _test_basic_params(audio_path, clip_path, loop_on, output_path, bpm,
 		f.write(output_audio)
 
 def test_basic1():
-	audio_path = 'assets/Incredible Bongo Band - Apache.wav'
-	clip_path = 'assets/Incredible Bongo Band - Apache (loop on).asd'
+	audio_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache.wav')
+	clip_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache (loop on).asd')
 	loop_on = True
-	output_path = 'output/test_basic1.wav'
+	output_path = str(OUTPUT_DIR / 'test_basic1.wav')
 	_test_basic_params(audio_path, clip_path, loop_on, output_path, 140,
 		start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
 		loop_start=4, loop_end=6, sr=44100, warp_on=True)
 
 def test_basic2():
-	audio_path = 'assets/Incredible Bongo Band - Apache.wav'
-	clip_path = 'assets/Incredible Bongo Band - Apache (loop off).asd'
+	audio_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache.wav')
+	clip_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache (loop off).asd')
 	loop_on = False
-	output_path = 'output/test_basic2.wav'
+	output_path = str(OUTPUT_DIR / 'test_basic2.wav')
 	_test_basic_params(audio_path, clip_path, loop_on, output_path, 140,
 		start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
 		loop_start=0, loop_end=5, sr=44100, warp_on=True)
 
 @pytest.mark.skip(reason="Live 12 format not yet supported - returns garbage values for clip parameters")
 def test_live12_loop_on():
-	audio_path = 'assets/Incredible Bongo Band - Apache.wav'
-	clip_path = 'assets/Incredible Bongo Band - Apache (loop on Live 12).wav.asd'
+	audio_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache.wav')
+	clip_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache (loop on Live 12).wav.asd')
 	loop_on = True
-	output_path = 'output/test_live12_loop_on.wav'
+	output_path = str(OUTPUT_DIR / 'test_live12_loop_on.wav')
 	_test_basic_params(audio_path, clip_path, loop_on, output_path, 140,
 		start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
 		loop_start=4, loop_end=6, sr=44100, warp_on=True)
 
 @pytest.mark.skip(reason="Live 12 format not yet supported - returns garbage values for clip parameters")
 def test_live12_loop_off():
-	audio_path = 'assets/Incredible Bongo Band - Apache.wav'
-	clip_path = 'assets/Incredible Bongo Band - Apache (loop off Live 12).wav.asd'
+	audio_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache.wav')
+	clip_path = str(ASSETS_DIR / 'Incredible Bongo Band - Apache (loop off Live 12).wav.asd')
 	loop_on = False
-	output_path = 'output/test_live12_loop_off.wav'
+	output_path = str(OUTPUT_DIR / 'test_live12_loop_off.wav')
 	_test_basic_params(audio_path, clip_path, loop_on, output_path, 140,
 		start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
 		loop_start=0, loop_end=5, sr=44100, warp_on=True)
