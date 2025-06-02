@@ -1,6 +1,6 @@
 # AbletonParsing
 
-[![CI](https://github.com/DBraun/AbletonParsing/actions/workflows/ci.yml/badge.svg)](https://github.com/DBraun/AbletonParsing/actions/workflows/ci.yml)
+[![CI](https://github.com/DBraun/AbletonParsing/actions/workflows/all.yml/badge.svg)](https://github.com/DBraun/AbletonParsing/actions/workflows/all.yml)
 [![PyPI version](https://badge.fury.io/py/abletonparsing.svg)](https://badge.fury.io/py/abletonparsing)
 
 Parse an Ableton ASD clip file and its warp markers in Python. This module has been tested with `.asd` files saved with Ableton 9 and Ableton 10. 
