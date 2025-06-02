@@ -1,4 +1,5 @@
 import abletonparsing
+import pytest
 
 import librosa
 import soundfile as sf
@@ -55,6 +56,26 @@ def test_basic2():
 	clip_path = 'assets/Incredible Bongo Band - Apache (loop off).asd'
 	loop_on = False
 	output_path = 'output/test_basic2.wav'
+	_test_basic_params(audio_path, clip_path, loop_on, output_path, 140,
+		start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
+		loop_start=0, loop_end=5, sr=44100, warp_on=True)
+
+@pytest.mark.skip(reason="Live 12 format not yet supported - returns garbage values for clip parameters")
+def test_live12_loop_on():
+	audio_path = 'assets/Incredible Bongo Band - Apache.wav'
+	clip_path = 'assets/Incredible Bongo Band - Apache (loop on Live 12).wav.asd'
+	loop_on = True
+	output_path = 'output/test_live12_loop_on.wav'
+	_test_basic_params(audio_path, clip_path, loop_on, output_path, 140,
+		start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
+		loop_start=4, loop_end=6, sr=44100, warp_on=True)
+
+@pytest.mark.skip(reason="Live 12 format not yet supported - returns garbage values for clip parameters")
+def test_live12_loop_off():
+	audio_path = 'assets/Incredible Bongo Band - Apache.wav'
+	clip_path = 'assets/Incredible Bongo Band - Apache (loop off Live 12).wav.asd'
+	loop_on = False
+	output_path = 'output/test_live12_loop_off.wav'
 	_test_basic_params(audio_path, clip_path, loop_on, output_path, 140,
 		start_marker=0, end_marker=5, hidden_loop_start=4, hidden_loop_end=6,
 		loop_start=0, loop_end=5, sr=44100, warp_on=True)

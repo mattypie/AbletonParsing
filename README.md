@@ -1,9 +1,32 @@
 # AbletonParsing
-Parse an Ableton ASD clip file and its warp markers in Python. This module has been tested with `.asd` files saved with Ableton 9 and Ableton 10.
+
+[![CI](https://github.com/DBraun/AbletonParsing/actions/workflows/ci.yml/badge.svg)](https://github.com/DBraun/AbletonParsing/actions/workflows/ci.yml)
+[![PyPI version](https://badge.fury.io/py/abletonparsing.svg)](https://badge.fury.io/py/abletonparsing)
+
+Parse an Ableton ASD clip file and its warp markers in Python. This module has been tested with `.asd` files saved with Ableton 9 and Ableton 10. 
+
+**Note:** Ableton Live 12 uses a different binary format that is not yet supported by this library.
 
 ## Install
 
 `pip install abletonparsing`
+
+### Development Dependencies
+
+To run the tests, you'll need to install additional dependencies:
+
+```bash
+# On macOS
+brew install rubberband
+
+# On Ubuntu/Debian
+sudo apt-get install librubberband-dev
+
+# Install Python test dependencies
+pip install abletonparsing[test]
+# or
+pip install -e ".[test]"  # for development
+```
 
 ## API
 
